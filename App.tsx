@@ -1,11 +1,11 @@
 import React from 'react';
 import { View } from 'react-native';
 import CalculatorScreen from './src/screens/CalculatorScreen';
-import { appStyle } from './src/themes/AppTheme';
+import { appStyles } from './src/themes/AppTheme';
 
 export default function App() {
   return (
-    <View style={appStyle.background}>
+    <View style={appStyles.background}>
       <CalculatorScreen />
     </View>
   );
