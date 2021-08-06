@@ -41,7 +41,7 @@ export default function CalculatorScreen() {
         </View>
 
         <View style={appStyles.row}>
-          <ButtonCalc text={'0'}/>
+          <ButtonCalc text={'0'} double/>
           <ButtonCalc text={'.'}/>
           <ButtonCalc text={'='} color={COLOR_ORANGE} />
         </View>

@@ -11,11 +11,11 @@ export const appStyles = StyleSheet.create({
   calculatorCtn:{
     flex:1,
     justifyContent:'flex-end',
-    alignItems:'center'
   },
 
   row:{
     flexDirection:'row',
+    justifyContent:'center'
   },
 
   result: {
