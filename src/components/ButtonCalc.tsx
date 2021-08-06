@@ -1,9 +1,14 @@
 import React from 'react';
-import { View } from 'react-native';
+import { Text, View } from 'react-native';
+import { buttonStyles } from '../themes/ButtonTheme';
 
-export default function App() {
+interface Props {
+  text:string,
+}
+export default function ButtonCalc({text}:Props) {
   return (
-    <View >
+    <View style={buttonStyles.container}>
+      <Text style={buttonStyles.content}>{text}</Text>
     </View>
   );
 }

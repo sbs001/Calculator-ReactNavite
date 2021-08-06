@@ -1,5 +1,6 @@
 import React from 'react';
 import { SafeAreaView, StatusBar, Text, View } from 'react-native';
+import ButtonCalc from '../components/ButtonCalc';
 import { appStyles } from '../themes/AppTheme';
 
 export default function CalculatorScreen() {
@@ -11,6 +12,8 @@ export default function CalculatorScreen() {
         <Text style={appStyles.result}>calcuator</Text>
 
         <View style={appStyles.row}>
+        <ButtonCalc text={'1'} />
+        <ButtonCalc text={'2'} />
 
         </View>
       </SafeAreaView>
