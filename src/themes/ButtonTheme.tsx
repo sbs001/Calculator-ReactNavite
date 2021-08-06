@@ -6,7 +6,9 @@ export const buttonStyles = StyleSheet.create({
     width: 80,
     backgroundColor: '#9B9B9B',
     borderRadius: 100,
-    justifyContent: 'center'
+    justifyContent: 'center',
+    marginHorizontal:10,
+    
   },
   content: {
     textAlign: 'center',

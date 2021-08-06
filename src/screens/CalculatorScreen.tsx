@@ -14,6 +14,8 @@ export default function CalculatorScreen() {
         <View style={appStyles.row}>
         <ButtonCalc text={'1'} />
         <ButtonCalc text={'2'} />
+        <ButtonCalc text={'2'} />
+        <ButtonCalc text={'2'} />
 
         </View>
       </SafeAreaView>

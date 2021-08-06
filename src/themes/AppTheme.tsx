@@ -10,7 +10,8 @@ export const appStyles = StyleSheet.create({
 
   calculatorCtn:{
     flex:1,
-    justifyContent:'flex-end'
+    justifyContent:'flex-end',
+    alignItems:'center'
   },
 
   row:{
