@@ -1,20 +1,23 @@
 import { StyleSheet } from "react-native";
 
+export const COLOR_GREY='#9B9B9B'
+export const COLOR_ORANGE='#FF9427'
+export const COLOR_LIGTH_GREY ='#2D2D2D'
+
 export const buttonStyles = StyleSheet.create({
   container: {
     height: 80,
     width: 80,
-    backgroundColor: '#9B9B9B',
     borderRadius: 100,
     justifyContent: 'center',
-    marginHorizontal:10,
+    margin:10,
     
   },
   content: {
     textAlign: 'center',
-    fontSize: 30,
+    fontSize: 33,
     fontWeight: '300',
     padding: 10,
-    color: 'black'
+    color: 'white'
   }
 })
