@@ -7,13 +7,13 @@ import { appStyles } from '../themes/AppTheme';
 import { COLOR_GREY, COLOR_ORANGE } from '../themes/ButtonTheme';
 
 enum Operators {
-  addition, subtracktion, multiplication, division
+  addition, subtracktion, multiplication, division, none
 }
 export default function CalculatorScreen() {
 
   const [number, setNumber] = useState('');
   const [prevNumber, setPrevNumber] = useState('');
-  const lastOperation = useRef<Operators>();
+  const lastOperation = useRef<Operators>(Operators.none);
 
   const clean = () => {
     setNumber('');
@@ -47,16 +47,41 @@ export default function CalculatorScreen() {
       setNumber(number.replace('-', ''));
     else setNumber('-' + number)
   }
+
   const setOperation = (operation: Operators) => {
     let prev = number;
     if (number.endsWith('.'))
       prev = number.slice(0, -1);
-    if (prev !== '0' && prev !== '-0'){
+    if (prev !== '0' && prev !== '-0') {
       setPrevNumber(prev);
       setNumber('');
       lastOperation.current = operation
     }
-}
+  }
+
+  const calculate = () => {
+
+    if(lastOperation.current != Operators.none){
+      
+      switch (lastOperation.current) {
+
+        case Operators.addition:
+          setNumber(`${Number(number) + Number(prevNumber)}`);
+          break;
+        case Operators.subtracktion:
+          setNumber(`${Number(prevNumber) - Number(number)}`);
+          break;
+        case Operators.multiplication:
+          setNumber(`${Number(number) * Number(prevNumber)}`);
+          break;
+        case Operators.division:
+          setNumber(`${Number(prevNumber) / Number(number)}`);
+          break;
+      }
+      
+      lastOperation.current= Operators.none;
+    }
+  }
 
   return (
     <View style={appStyles.calculatorCtn}>
@@ -96,7 +121,7 @@ export default function CalculatorScreen() {
         <View style={appStyles.row}>
           <ButtonCalc text={'0'} double action={makeNumber} />
           <ButtonCalc text={'.'} action={addDecimal} />
-          <ButtonCalc text={'='} color={COLOR_ORANGE} action={clean} />
+          <ButtonCalc text={'='} color={COLOR_ORANGE} action={calculate} />
         </View>
       </SafeAreaView>
     </View>
