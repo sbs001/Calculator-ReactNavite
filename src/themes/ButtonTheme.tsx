@@ -1,8 +1,8 @@
 import { StyleSheet } from "react-native";
 
-export const COLOR_GREY='#9B9B9B'
-export const COLOR_ORANGE='#FF9427'
-export const COLOR_LIGTH_GREY ='#2D2D2D'
+export const COLOR_GREY = '#9B9B9B'
+export const COLOR_ORANGE = '#FF9427'
+export const COLOR_LIGTH_GREY = '#2D2D2D'
 
 export const buttonStyles = StyleSheet.create({
   container: {
@@ -10,8 +10,8 @@ export const buttonStyles = StyleSheet.create({
     width: 80,
     borderRadius: 100,
     justifyContent: 'center',
-    margin:10,
-    
+    margin: 10,
+
   },
   content: {
     textAlign: 'center',

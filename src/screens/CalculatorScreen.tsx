@@ -7,16 +7,31 @@ import { COLOR_GREY, COLOR_ORANGE } from '../themes/ButtonTheme';
 
 export default function CalculatorScreen() {
 
-  const [number,setNumber] = useState('');
-  const [prevNumber,setPrevNumber] = useState('');
+  const [number, setNumber] = useState('');
+  const [prevNumber, setPrevNumber] = useState('');
 
   const clean = () => {
     setNumber('')
   }
-  const makeNumber =  (button:string) => {
+
+  const makeNumber = (button: string) => {
     setNumber(number + button)
   }
-  
+  const addDecimal = (button: string) => {
+    if (!number.length)
+      setNumber('0' + button)
+    else
+      if (!number.includes('.'))
+        setNumber(number + button)
+
+  }
+
+  const changeSing = () => {
+    if (number.includes('-'))
+      setNumber(number.replace('-', ''));
+    else setNumber('-' + number)
+  }
+
   return (
     <View style={appStyles.calculatorCtn}>
       <SafeAreaView>
@@ -25,37 +40,37 @@ export default function CalculatorScreen() {
         <Text style={appStyles.result} adjustsFontSizeToFit numberOfLines={1}>{number}</Text>
 
         <View style={appStyles.row}>
-          <ButtonCalc text={'C'} color={COLOR_GREY} action={clean}/>
-          <ButtonCalc text={'+/-'} color={COLOR_GREY} action={clean}/>
+          <ButtonCalc text={'C'} color={COLOR_GREY} action={clean} />
+          <ButtonCalc text={'+/-'} color={COLOR_GREY} action={changeSing} />
           <ButtonCalc text={'DEL'} color={COLOR_GREY} action={clean} />
-          <ButtonCalc text={'/'} color={COLOR_ORANGE} action={clean}/>
+          <ButtonCalc text={'/'} color={COLOR_ORANGE} action={clean} />
         </View>
 
         <View style={appStyles.row}>
-          <ButtonCalc text={'7'} action={makeNumber}/>
-          <ButtonCalc text={'8'} action={makeNumber}/>
-          <ButtonCalc text={'9'} action={makeNumber}/>
-          <ButtonCalc text={'x'} color={COLOR_ORANGE} action={clean}/>
+          <ButtonCalc text={'7'} action={makeNumber} />
+          <ButtonCalc text={'8'} action={makeNumber} />
+          <ButtonCalc text={'9'} action={makeNumber} />
+          <ButtonCalc text={'x'} color={COLOR_ORANGE} action={clean} />
         </View>
 
         <View style={appStyles.row}>
-          <ButtonCalc text={'4'} action={makeNumber}/>
-          <ButtonCalc text={'5'} action={makeNumber}/>
+          <ButtonCalc text={'4'} action={makeNumber} />
+          <ButtonCalc text={'5'} action={makeNumber} />
           <ButtonCalc text={'6'} action={makeNumber} />
-          <ButtonCalc text={'-'} color={COLOR_ORANGE} action={clean}/>
+          <ButtonCalc text={'-'} color={COLOR_ORANGE} action={clean} />
         </View>
 
         <View style={appStyles.row}>
-          <ButtonCalc text={'1'} action={makeNumber}/>
-          <ButtonCalc text={'2'} action={makeNumber}/>
-          <ButtonCalc text={'3'} action={makeNumber}/>
-          <ButtonCalc text={'+'} color={COLOR_ORANGE} action={clean}/>
+          <ButtonCalc text={'1'} action={makeNumber} />
+          <ButtonCalc text={'2'} action={makeNumber} />
+          <ButtonCalc text={'3'} action={makeNumber} />
+          <ButtonCalc text={'+'} color={COLOR_ORANGE} action={clean} />
         </View>
 
         <View style={appStyles.row}>
-          <ButtonCalc text={'0'} double action={makeNumber}/>
-          <ButtonCalc text={'.'} action={clean}/>
-          <ButtonCalc text={'='} color={COLOR_ORANGE} action={clean}/>
+          <ButtonCalc text={'0'} double action={makeNumber} />
+          <ButtonCalc text={'.'} action={addDecimal} />
+          <ButtonCalc text={'='} color={COLOR_ORANGE} action={clean} />
         </View>
       </SafeAreaView>
     </View>

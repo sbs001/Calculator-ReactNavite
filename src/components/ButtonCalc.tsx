@@ -6,7 +6,7 @@ interface Props {
   text: string,
   color?: string,
   double?: boolean,
-  action: (button:string) => void,
+  action: (button: string) => void,
 }
 export default function ButtonCalc({ text, color = COLOR_LIGTH_GREY, double, action }: Props) {
   return (
