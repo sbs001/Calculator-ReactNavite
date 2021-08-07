@@ -13,6 +13,7 @@ export default function CalculatorScreen() {
 
   const [number, setNumber] = useState('');
   const [prevNumber, setPrevNumber] = useState('');
+  const [isResult, setIsResult] = useState(false);
   const lastOperation = useRef<Operators>(Operators.none);
 
   const clean = () => {
@@ -21,10 +22,17 @@ export default function CalculatorScreen() {
   }
 
   const makeNumber = (button: string) => {
-    if (number === '0' || number === '-0')
-      setNumber(number)
+    if (isResult) {
+      setNumber(button);
+      setIsResult(false)
+    }
     else
-      setNumber(number + button)
+      if (number === '0' || number === '-0') {
+        setNumber(number);
+      }
+      else
+        setNumber(number + button)
+
   }
 
   const addDecimal = (button: string) => {
@@ -52,6 +60,7 @@ export default function CalculatorScreen() {
     let prev = number;
     if (number.endsWith('.'))
       prev = number.slice(0, -1);
+
     if (prev !== '0' && prev !== '-0') {
       setPrevNumber(prev);
       setNumber('');
@@ -61,8 +70,8 @@ export default function CalculatorScreen() {
 
   const calculate = () => {
 
-    if(lastOperation.current != Operators.none){
-      
+    if (lastOperation.current != Operators.none) {
+
       switch (lastOperation.current) {
 
         case Operators.addition:
@@ -78,8 +87,9 @@ export default function CalculatorScreen() {
           setNumber(`${Number(prevNumber) / Number(number)}`);
           break;
       }
-      
-      lastOperation.current= Operators.none;
+
+      lastOperation.current = Operators.none;
+      setIsResult(true)
     }
   }
 
